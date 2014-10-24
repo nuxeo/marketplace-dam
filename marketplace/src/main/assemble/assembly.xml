@@ -1,4 +1,4 @@
-<project name="nuxeo-assembly"
+<project name="dam-assembly"
          default="build"
          xmlns:nx="urn:nuxeo-build"
          xmlns:artifact="urn:nuxeo-artifact">
@@ -7,10 +7,11 @@
            uri="urn:nuxeo-artifact" />
   <taskdef resource="net/sf/antcontrib/antlib.xml" />
 
-  <target name="build" description="Build Nuxeo DAM Marketplace package">
+  <target name="build" description="Build DAM Marketplace package">
     <property name="outdir" value="${maven.project.build.directory}" />
     <artifact:nuxeo-expand includeTestScope="true" groupPrefixes="org.nuxeo" />
-    <artifact:print output="${outdir}/artifacts-dam.properties" mode="sdk" />
+    <artifact:print output="${outdir}/artifacts-dam.properties"
+                    mode="sdk" />
     <artifact:print output="${outdir}/test-artifacts-dam.properties"
                     mode="sdk"
                     scopes="test" />
@@ -24,7 +25,8 @@
     <copy todir="${outdir}/marketplace">
       <fileset dir="src/main/resources" />
       <filterset>
-        <filter token="VERSION" value="${nuxeo.distribution.version}" />
+        <filter token="VERSION" value="${maven.project.version}" />
+        <filter token="DISTRIB_VERSION" value="${nuxeo.distribution.version}" />
       </filterset>
     </copy>
     <copy file="${outdir}/artifacts-dam.properties"
@@ -58,26 +60,22 @@
       </artifact:set>
     </copy>
     <nx:rmdups dir="${outdir}/nxr/lib" />
-    <!-- ZIP Nuxeo NXR to compare with base distribution NXR -->
-    <zip destfile="${outdir}/nxr-${nuxeo.distribution.version}.zip"
+    <zip destfile="${outdir}/nxr-${maven.project.version}.zip"
          basedir="${outdir}/nxr" />
-    <artifact:attach file="${outdir}/nxr-${nuxeo.distribution.version}.zip"
-                     classifier="nxr"
-                     type="zip" />
-
-    <!-- Only include files not already provided by the base distribution -->
-    <nx:zipdiff file1="${outdir}/nxr-${nuxeo.distribution.version}.zip"
+    <nx:zipdiff file1="${outdir}/nxr-${maven.project.version}.zip"
                 file2="${outdir}/nuxeo-distribution-cap-${nuxeo.distribution.version}.zip"
                 includesfile="${outdir}/includes"
                 excludesfile="${outdir}/excludesfile"
                 patternsetid="dam.versus.cap"
-                ignoreContentPattern=".*jar$">
+                ignoreContent="false"
+                ignoreContentPattern=".*\.jar$">
     </nx:zipdiff>
-    <unzip src="${outdir}/nxr-${nuxeo.distribution.version}.zip"
+    <unzip src="${outdir}/nxr-${maven.project.version}.zip"
            dest="${outdir}/marketplace/install">
       <patternset refid="dam.versus.cap" />
     </unzip>
 
+    <!-- Generate install.xml content -->
     <var name="install.bundles" value="" />
     <if>
       <available file="${outdir}/marketplace/install/bundles" />
@@ -106,6 +104,17 @@
   &lt;copy file=&quot;${package.root}/install/test-artifacts-dam.properties&quot;${line.separator}
     todir=&quot;${env.server.home}/sdk&quot; overwrite=&quot;true&quot; /&gt;" />
 
+    <var name="install.templates" value="" />
+    <if>
+      <available file="${outdir}/marketplace/install/templates" />
+      <then>
+        <var name="install.templates"
+             value="${line.separator}
+  &lt;copy dir=&quot;${package.root}/install/templates&quot; todir=&quot;${env.templates}&quot; overwrite=&quot;true&quot; /&gt;${line.separator}
+  &lt;config addtemplate=&quot;dam&quot; /&gt;${line.separator}" />
+      </then>
+    </if>
+
     <copy file="src/main/resources/install.xml"
           todir="${outdir}/marketplace"
           overwrite="true">
@@ -113,12 +122,14 @@
         <filter token="BUNDLES" value="${install.bundles}" />
         <filter token="LIBS" value="${install.libs}" />
         <filter token="PROPERTIES" value="${install.properties}" />
+        <filter token="TEMPLATES" value="${install.templates}" />
       </filterset>
     </copy>
 
-    <zip destfile="${outdir}/${maven.project.artifactId}-${nuxeo.distribution.version}.zip"
+    <zip destfile="${outdir}/${maven.project.artifactId}-${maven.project.version}.zip"
          basedir="${outdir}/marketplace" />
-    <artifact:attach file="${outdir}/${maven.project.artifactId}-${nuxeo.distribution.version}.zip"
+    <artifact:attach file="${outdir}/${maven.project.artifactId}-${maven.project.version}.zip"
                      type="zip" />
   </target>
+
 </project>

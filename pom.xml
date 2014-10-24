@@ -10,11 +10,42 @@
   <groupId>org.nuxeo.marketplace.dam</groupId>
   <artifactId>parent</artifactId>
   <packaging>pom</packaging>
-  <name>Nuxeo DAM Marketplace parent</name>
+  <name>DAM packaging parent POM</name>
+  <version>6.0-SNAPSHOT</version>
 
   <modules>
     <module>marketplace</module>
     <module>ftest/webdriver</module>
   </modules>
+
+  <repositories>
+    <repository>
+      <id>public</id>
+      <url>http://maven.nuxeo.org/nexus/content/groups/public</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>public-snapshot</id>
+      <url>http://maven.nuxeo.org/nexus/content/groups/public-snapshot</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <updatePolicy>always</updatePolicy>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <scm>
+    <connection>scm:git:git://github.com/nuxeo/marketplace-dam.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com:nuxeo/marketplace-dam.git</developerConnection>
+    <url>https://github.com/nuxeo/marketplace-dam</url>
+  </scm>
 
 </project>

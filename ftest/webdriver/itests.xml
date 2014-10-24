@@ -1,4 +1,4 @@
-<project name="nuxeo-asset-browser-tests"
+<project name="nuxeo-dam-tests"
          xmlns:nx="urn:nuxeo-build"
          xmlns:artifact="urn:nuxeo-artifact">
   <taskdef resource="org/nuxeo/build/antlib.xml" uri="urn:nuxeo-build" />
@@ -13,11 +13,11 @@
   <import file="${out.dir}/nuxeo-ftest.xml" />
 
   <property name="mp.install"
-            value="${out.dir}/marketplace-dam-${nuxeo.distribution.version}.zip" />
+            value="${out.dir}/marketplace-${maven.project.version}.zip" />
   <target name="prepare-environment"
           depends="_init,prepare-db,prepare-tomcat,prepare-jboss">
     <copy todir="${out.dir}">
-      <artifact:resolveFile key="org.nuxeo.marketplace.dam:marketplace-dam::zip" />
+      <artifact:resolveFile key="org.nuxeo.marketplace.dam:marketplace::zip" />
     </copy>
   </target>
 
