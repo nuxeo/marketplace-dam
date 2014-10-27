@@ -65,7 +65,8 @@
   <production-state>production_ready</production-state>
   <supported>true</supported>
   <platforms>
-    <platform>cap-@VERSION@</platform>
+    <platform>cap-@DISTRIB_VERSION@</platform>
+    <platform>cap-@DISTRIB_VERSION@-HF*</platform>
   </platforms>
   <conflicts>
     <package>nuxeo-cmf</package>
