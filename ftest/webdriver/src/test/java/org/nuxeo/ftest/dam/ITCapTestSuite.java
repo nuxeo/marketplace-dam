@@ -26,7 +26,7 @@ import org.nuxeo.ftest.cap.AbstractCapITSuite;
 /**
  * Tests from CAP package
  *
- * @since 5.9.6
+ * @since 6.0
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ AbstractCapITSuite.class })
