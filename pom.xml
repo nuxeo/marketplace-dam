@@ -10,7 +10,7 @@
   <artifactId>parent</artifactId>
   <packaging>pom</packaging>
   <name>DAM packaging parent POM</name>
-  <version>6.1.4</version>
+  <version>6.1.5-SNAPSHOT</version>
 
   <modules>
     <module>marketplace</module>
