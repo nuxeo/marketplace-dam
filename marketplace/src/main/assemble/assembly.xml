@@ -67,16 +67,26 @@
       <patternset refid="dam.versus.cap" />
     </unzip>
 
+    <!-- Separate JSF-UI package -->
+    <mkdir dir="${outdir}/marketplace/install/bundles-jsf-ui" />
+    <move todir="${outdir}/marketplace/install/bundles-jsf-ui">
+      <fileset dir="${outdir}/marketplace/install/bundles">
+        <include name="nuxeo-annot-gwt-*.jar" />
+        <include name="nuxeo-imaging-recompute-*.jar" />
+        <include name="nuxeo-platform-imaging-tiling-preview-*.jar" />
+        <include name="nuxeo-platform-audio-jsf-*.jar" />
+        <include name="nuxeo-platform-video-jsf-*.jar" />
+      </fileset>
+    </move>
+
     <!-- Generate install.xml content -->
     <var name="install.bundles" value="" />
-    <if>
-      <available file="${outdir}/marketplace/install/bundles" />
-      <then>
-        <var name="install.bundles"
-             value="${line.separator}
+    <var name="install.bundles"
+         value="${line.separator}
   &lt;update file=&quot;${package.root}/install/bundles&quot; todir=&quot;${env.bundles}&quot; /&gt;" />
-      </then>
-    </if>
+    <var name="install.bundles"
+         value="${install.bundles}${line.separator}
+  &lt;update file=&quot;${package.root}/install/bundles-jsf-ui&quot; todir=&quot;${env.bundles}&quot; if=&quot;Packages.contains('nuxeo-jsf-ui')&quot; /&gt;" />
 
     <var name="install.libs" value="" />
     <if>
