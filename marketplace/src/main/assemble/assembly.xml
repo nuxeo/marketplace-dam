@@ -94,7 +94,7 @@
          value="${install.bundles}${line.separator}
   &lt;update file=&quot;${package.root}/install/bundles-jsf-ui&quot; todir=&quot;${env.bundles}&quot; if=&quot;Packages.contains('nuxeo-jsf-ui')&quot; /&gt;" />
     <var name="install.bundles"
-         value="${install.content}${line.separator}
+         value="${install.bundles}${line.separator}
   &lt;update file=&quot;${package.root}/install/bundles-web-ui&quot; todir=&quot;${env.bundles}&quot; if=&quot;Packages.contains('nuxeo-web-ui')&quot; /&gt;" />
 
     <var name="install.libs" value="" />
