@@ -32,8 +32,7 @@
     </dependency>
     <dependency>
       <groupId>org.nuxeo.ecm.distribution</groupId>
-      <artifactId>nuxeo-distribution-tomcat</artifactId>
-      <classifier>nuxeo-cap</classifier>
+      <artifactId>nuxeo-server-tomcat</artifactId>
       <type>zip</type>
       <scope>provided</scope>
     </dependency>
@@ -54,7 +53,7 @@
     </dependency>
     <dependency>
       <groupId>org.nuxeo.ecm.distribution</groupId>
-      <artifactId>nuxeo-distribution-cap-webdriver-tests</artifactId>
+      <artifactId>nuxeo-jsf-ui-webdriver-tests</artifactId>
       <scope>test</scope>
       <type>test-jar</type>
     </dependency>

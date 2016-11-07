@@ -65,11 +65,12 @@
   <production-state>production_ready</production-state>
   <supported>true</supported>
   <platforms>
-    <platform>cap-@DISTRIB_VERSION@</platform>
-    <platform>cap-@DISTRIB_VERSION@-HF*</platform>
-    <platform>server-@DISTRIB_VERSION@</platform>
-    <platform>server-@DISTRIB_VERSION@-HF*</platform>
+    <platform>server-@DISTRIB_VERSION@*</platform>
   </platforms>
+  <optional-dependencies>
+    <package>nuxeo-jsf-ui</package>
+    <package>nuxeo-web-ui</package>
+  </optional-dependencies>
   <conflicts>
     <package>nuxeo-cmf</package>
   </conflicts>
