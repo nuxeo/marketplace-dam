@@ -106,7 +106,8 @@
     <zip destfile="${outdir}/nuxeo-nxr-server-jsf-ui-${nuxeo.distribution.version}.zip"
          basedir="${outdir}/nuxeo-nxr-server-jsf-ui" />
     <zip destfile="${outdir}/nxr-${maven.project.version}.zip" basedir="${outdir}/nxr" />
-    <!-- Diff against Nuxeo Server + JSF UI -->
+    <artifact:attach file="${outdir}/nxr-${maven.project.version}.zip" classifier="nxr" type="zip" />
+
     <nx:zipdiff file1="${outdir}/nxr-${maven.project.version}.zip"
                 file2="${outdir}/nuxeo-nxr-server-jsf-ui-${nuxeo.distribution.version}.zip"
                 includesfile="${outdir}/includes"
