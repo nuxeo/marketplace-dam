@@ -26,3 +26,4 @@ MANIFEST
 .project
 .settings
 .pydevproject
+node_modules
