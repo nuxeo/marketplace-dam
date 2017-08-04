@@ -20,7 +20,20 @@
     <profile>
       <id>ftest</id>
       <modules>
-        <module>ftest/webdriver</module>
+        <module>ftest/jsf-ui/webdriver</module>
+        <module>ftest/web-ui/webdriver</module>
+      </modules>
+    </profile>
+    <profile>
+      <id>jsf-ui-ftest</id>
+      <modules>
+        <module>ftest/jsf-ui/webdriver</module>
+      </modules>
+    </profile>
+    <profile>
+      <id>web-ui-ftest</id>
+      <modules>
+        <module>ftest/web-ui/webdriver</module>
       </modules>
     </profile>
   </profiles>

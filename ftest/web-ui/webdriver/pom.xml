@@ -4,26 +4,13 @@
     <groupId>org.nuxeo.marketplace.dam</groupId>
     <artifactId>parent</artifactId>
     <version>6.3.2-SNAPSHOT</version>
-    <relativePath>../../pom.xml</relativePath>
+    <relativePath>../../../pom.xml</relativePath>
   </parent>
 
-  <artifactId>webdriver</artifactId>
-  <name>DAM Functional Tests with Webdriver</name>
+  <artifactId>webdriverio</artifactId>
+  <name>DAM Functional Tests with WebdriverIO for Web UI</name>
 
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-server-standalone</artifactId>
-    </dependency>
     <dependency>
       <groupId>org.nuxeo.marketplace.dam</groupId>
       <artifactId>marketplace</artifactId>
@@ -34,34 +21,13 @@
       <groupId>org.nuxeo.ecm.distribution</groupId>
       <artifactId>nuxeo-server-tomcat</artifactId>
       <type>zip</type>
-      <scope>provided</scope>
+      <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.nuxeo.ecm.distribution</groupId>
-      <artifactId>nuxeo-marketplace-jsf-ui</artifactId>
+      <groupId>org.nuxeo.web.ui</groupId>
+      <artifactId>nuxeo-web-ui-marketplace</artifactId>
       <type>zip</type>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.nuxeo.ecm.distribution</groupId>
-      <artifactId>nuxeo-functional-tests</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.nuxeo.runtime</groupId>
-      <artifactId>nuxeo-runtime-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.nuxeo.ecm.core</groupId>
-      <artifactId>nuxeo-core-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.nuxeo.ecm.distribution</groupId>
-      <artifactId>nuxeo-jsf-ui-webdriver-tests</artifactId>
-      <scope>test</scope>
-      <type>test-jar</type>
     </dependency>
   </dependencies>
 
@@ -75,24 +41,6 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-failsafe-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>integration-test</goal>
-              <goal>verify</goal>
-            </goals>
-            <configuration>
-              <argLine>-Dlog4j.configuration=${file.uri.prefix}${basedir}/src/test/resources/log4j.xml
-                -Dnuxeo.log.dir=${project.build.directory}
-              </argLine>
-              <reportNameSuffix>dam</reportNameSuffix>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <groupId>org.nuxeo.build</groupId>
         <artifactId>ant-assembly-maven-plugin</artifactId>
         <configuration>
@@ -100,7 +48,7 @@
         </configuration>
         <executions>
           <execution>
-            <id>start-tomcat</id>
+            <id>start-nuxeo</id>
             <phase>pre-integration-test</phase>
             <goals>
               <goal>build</goal>
@@ -113,7 +61,17 @@
             </configuration>
           </execution>
           <execution>
-            <id>stop-tomcat</id>
+            <id>run-tests</id>
+            <goals>
+              <goal>integration-test</goal>
+              <goal>verify</goal>
+            </goals>
+            <configuration>
+              <target>run-tests</target>
+            </configuration>
+          </execution>
+          <execution>
+            <id>stop-nuxeo</id>
             <phase>post-integration-test</phase>
             <goals>
               <goal>build</goal>
@@ -136,6 +94,12 @@
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>
+    </profile>
+    <profile>
+      <id>jboss</id>
+    </profile>
+    <profile>
+      <id>jbossear</id>
     </profile>
     <profile>
       <id>pgsql</id>
