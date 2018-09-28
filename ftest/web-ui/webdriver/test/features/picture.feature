@@ -21,11 +21,11 @@ Feature: Create and Edit Pictures
       | subjects     | Gastronomy,Comics |
     Then I see the Picture page
     And I can see Picture metadata with the following properties:
-      | name         | value             |
-      | title        | my title          |
-      | description  | my description    |
-      | nature       | Application       |
-      | subjects     | Gastronomy,Comics |
+      | name         | value                            |
+      | title        | my title                         |
+      | description  | my description                   |
+      | nature       | Application                      |
+      | subjects     | Daily life/Gastronomy,Art/Comics |
     And I can see the inline nuxeo-image-viewer previewer
     And I can see the picture formats panel
 
@@ -41,10 +41,10 @@ Feature: Create and Edit Pictures
         | coverage     | Canada               |
       Then I see the Picture page
       And I can see Picture metadata with the following properties:
-        | name         | value                |
-        | title        | my title             |
-        | description  | my description       |
-        | nature       | Internship report    |
-        | subjects     | Medicine,Video games |
-        | coverage     | Canada               |
+        | name         | value                                   |
+        | title        | my title                                |
+        | description  | my description                          |
+        | nature       | Internship report                       |
+        | subjects     | Science/Medicine,Daily life/Video games |
+        | coverage     | North-america/Canada                    |
       And I can see the picture formats panel
