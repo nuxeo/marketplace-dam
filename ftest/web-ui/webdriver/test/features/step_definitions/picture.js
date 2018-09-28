@@ -4,6 +4,6 @@ module.exports = function () {
   this.Then('I can see the picture formats panel', () => {
     const page = this.ui.browser.documentPage(this.doc.type);
     page.waitForVisible();
-    page.el.element(`..//div[@class="additional"]`).waitForVisible(`nuxeo-picture-formats`).should.be.true;
+    page.el.element(`div.additional`).waitForVisible(`nuxeo-picture-formats`).should.be.true;
   });
 };
