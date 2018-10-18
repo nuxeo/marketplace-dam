@@ -25,10 +25,6 @@
     </condition>
     <delete dir="node_modules" failonerror="true" />
     <exec executable="${cmd.npm}" failonerror="true">
-      <arg value="cache" />
-      <arg value="clear" />
-    </exec>
-    <exec executable="${cmd.npm}" failonerror="true">
       <arg value="install" />
     </exec>
     <exec executable="${cmd.npm}" failonerror="true">

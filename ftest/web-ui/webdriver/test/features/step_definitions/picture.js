@@ -1,9 +1,7 @@
-'use strict';
+import { Then } from 'cucumber';
 
-module.exports = function () {
-  this.Then('I can see the picture formats panel', () => {
-    const page = this.ui.browser.documentPage(this.doc.type);
-    page.waitForVisible();
-    page.el.element(`div.additional`).waitForVisible(`nuxeo-picture-formats`).should.be.true;
-  });
-};
+Then('I can see the picture formats panel', function () {
+  const page = this.ui.browser.documentPage(this.doc.type);
+  page.waitForVisible();
+  page.el.element('div.additional').waitForVisible('nuxeo-picture-formats').should.be.true;
+});
