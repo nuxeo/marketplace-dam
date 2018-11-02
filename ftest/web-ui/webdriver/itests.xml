@@ -26,6 +26,7 @@
     <delete dir="node_modules" failonerror="true" />
     <exec executable="${cmd.npm}" failonerror="true">
       <arg value="install" />
+      <arg value="--no-package-lock" />
     </exec>
     <exec executable="${cmd.npm}" failonerror="true">
       <arg value="test" />
