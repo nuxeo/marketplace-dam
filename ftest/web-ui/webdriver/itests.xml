@@ -10,7 +10,7 @@
   <import file="${out.dir}/nuxeo-ftest.xml" />
 
   <property name="mp.install"
-            value="${out.dir}/nuxeo-web-ui-marketplace-${nuxeo.webui.mp.version}.zip,
+            value="${out.dir}/nuxeo-web-ui-marketplace-${marketplace.webui.version}.zip,
     file:${out.dir}/marketplace-${maven.project.version}.zip" />
   <target name="prepare-environment" depends="_init,prepare-db,prepare-tomcat">
     <copy todir="${out.dir}">
