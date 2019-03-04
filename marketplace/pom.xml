@@ -52,10 +52,6 @@
       <artifactId>nuxeo-dam-jsf</artifactId>
       <type>pom</type>
     </dependency>
-    <dependency>
-      <groupId>org.nuxeo.dam</groupId>
-      <artifactId>nuxeo-dam-web-ui</artifactId>
-    </dependency>
 
   </dependencies>
 
