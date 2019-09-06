@@ -16,16 +16,11 @@
     <module>marketplace</module>
   </modules>
 
-  <properties>
-    <marketplace.webui.version>3.0.0-SNAPSHOT</marketplace.webui.version>
-  </properties>
-
   <profiles>
     <profile>
       <id>ftest</id>
       <modules>
         <module>ftest/jsf-ui/webdriver</module>
-        <module>ftest/web-ui/webdriver</module>
       </modules>
     </profile>
     <profile>
@@ -34,23 +29,10 @@
         <module>ftest/jsf-ui/webdriver</module>
       </modules>
     </profile>
-    <profile>
-      <id>web-ui-ftest</id>
-      <modules>
-        <module>ftest/web-ui/webdriver</module>
-      </modules>
-    </profile>
   </profiles>
 
   <dependencyManagement>
     <dependencies>
-      <dependency>
-        <groupId>org.nuxeo.web.ui</groupId>
-        <artifactId>nuxeo-web-ui-marketplace</artifactId>
-        <version>${marketplace.webui.version}</version>
-        <type>zip</type>
-      </dependency>
-
       <dependency>
         <groupId>org.nuxeo.marketplace.dam</groupId>
         <artifactId>marketplace</artifactId>
