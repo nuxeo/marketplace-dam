@@ -20,9 +20,6 @@
     <package>nuxeo-jsf-ui</package>
     <package>nuxeo-web-ui</package>
   </optional-dependencies>
-  <conflicts>
-    <package>nuxeo-cmf</package>
-  </conflicts>
   <license>LGPL</license>
   <license-url>http://www.gnu.org/licenses/lgpl.html</license-url>
   <visibility>PUBLIC</visibility>
